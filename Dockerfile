@@ -31,4 +31,4 @@ WORKDIR /app
 COPY . .
 
 # Run the application
-CMD [ "python", "./main.py" ]
+CMD [ "sh", "-c", "python ./main.py --token=${BOT_TOKEN} --chat_id=${BOT_CHAT_ID} --from_id=${BOT_FROM_ID}" ]

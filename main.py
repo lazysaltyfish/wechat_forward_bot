@@ -79,10 +79,10 @@ def start(update, context):
 def echo(update, context):
     """Echo the user message."""
     if update.message is None:
-        logging.warn("Receive a empty message")
+        logging.warning("Receive a empty message")
         return
-    if len(FROM_ID) > 0 and update.message.chat_id != FROM_ID:
-        logging.warn("Receive a message from " + update.message.chat_id + " ; forward to specific user id")
+    if len(FROM_ID) > 0 and str(update.message.chat_id) != FROM_ID:
+        logging.warning("Receive a message from " + str(update.message.chat_id) + " ; forward to specific user id")
         update.message.forward(chat_id=FROM_ID)
         return
 
@@ -91,7 +91,7 @@ def echo(update, context):
     md_message = None
     if not is_wechat_artical(update.message.text):
         result = "Not a WeChat artical link"
-        logging.warn("Not a Wechat artical link")
+        logging.warning("Not a Wechat artical link")
     else:
         md_message = construct_message_by_url(update.message.text)
         if md_message is None:
