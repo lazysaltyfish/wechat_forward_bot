@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 pypy:3-slim
+FROM --platform=linux/arm64 pypy:3
 
 WORKDIR /usr/src/app
 
