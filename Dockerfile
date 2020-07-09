@@ -1,7 +1,10 @@
-FROM python:3.8-alpine
+FROM --platform=linux/arm64 pypy:3-slim
 
-COPY . /app
-WORKDIR /app
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD [ "python", "./main.py" ]
+COPY . .
+
+CMD [ "pypy3", "./main.py" ]
